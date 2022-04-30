@@ -1,0 +1,36 @@
+
+<h2> Liste des Produits</h2>
+<table class="table table-striped" >
+
+
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Prix Unitaire</th>
+    <th>Quantite</th>
+ 
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let produit of produits">
+    <td (click)="produitClicked(produit)" >{{produit.nom | slice:0:10 }} </td>
+    <td>{{produit.prix_unitaire }}</td>
+    <td>{{produit.quantite}}</td>
+ 
+
+
+  
+
+
+  </tr>
+  </tbody>
+</table>
+
+<hr>
+Nom <input type="text" [(ngModel)]="selectedProduit.nom"/><br>
+Prix Unitaire <input type="text" [(ngModel)]="selectedProduit.prix_unitaire"/><br>
+Quantite <input type="text" [(ngModel)]="selectedProduit.quantite"/><br>
+
+<button  *ngIf="selectedProduit.id != -1" (click)="createProduit()" class = "btn btn-info" style="margin-left: 10px"> ajouter</button>
+<button *ngIf="selectedProduit.id != -1" (click)="updateProduit()" class = "btn btn-primary" style="margin-left: 10px"> modifier</button>
+<button *ngIf="selectedProduit.id != -1" (click)="deleteProduit()" class = "btn btn-danger" style="margin-left: 10px"> supprimer</button>
